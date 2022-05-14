@@ -23,7 +23,7 @@ width: 100%;
 
 }
 .layout{
-  padding: 10px;
+  padding: 40px;
 }
 
 .navbar-container{
@@ -250,6 +250,7 @@ text-align: end;
   left: 8%; */
   top: -25%;
   left: 25%;
+  object-fit: contain;
 }
 .banner-desc .right{
   line-height: 1.4;

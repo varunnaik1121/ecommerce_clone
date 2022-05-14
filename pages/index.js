@@ -12,8 +12,8 @@ import { client } from "../lib/client";
 const index = ({ products, bannerData }) => {
   return (
     <>
-      <HeroBanner />
-      {console.log(bannerData)}
+      <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
+      {console.log(products)}
 
       <div className="products-heading">
         <h2>Best Selling products</h2>
@@ -21,16 +21,16 @@ const index = ({ products, bannerData }) => {
       </div>
       <div className="products-container">
         {products?.map((product) => {
-          return product.name;
+          return <Product key={product._id} product={product}></Product>;
         })}
       </div>
-      <FooterBanner />
+      <FooterBanner footerBanner={bannerData && bannerData[0]} />
     </>
   );
 };
 
 export const getServerSideProps = async () => {
-  const query = '*[_type=="products"]';
+  const query = '*[_type=="product"]';
   const products = await client.fetch(query);
   const bannerquery = '*[_type=="banner"]';
   const bannerData = await client.fetch(bannerquery);
